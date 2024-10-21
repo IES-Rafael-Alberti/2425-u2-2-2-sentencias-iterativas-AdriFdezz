@@ -1,6 +1,5 @@
 """
-Escribir un programa que pida al usuario un número entero positivo y muestre por pantalla 
-todos los números impares desde 1 hasta ese número separados por comas.
+Escribir un programa que pida al usuario un numero entero positivo y muestre por pantalla la cuenta atras desde ese numero hasta cero separados por comas.
 """
 
 def leerNumero() -> int:
@@ -10,7 +9,7 @@ def leerNumero() -> int:
     Si el numero no es un numero entero valido o es menor o igual a cero, mostrara un mensaje de error y volvera a pedir el numero.
 
     Returns:
-        int: El número introducido por el usuario.
+        int: El numero introducido por el usuario.
     """
 
     numeroValido = False
@@ -32,43 +31,38 @@ def leerNumero() -> int:
             
     return numero
 
-def numerosImpares(numero: int) -> list:
+def cuentaAtras(numero: int) -> list:
     """
-    Genera una lista de numeros impares desde 1 hasta el numero introducido.
+    Genera una lista con la cuenta atras desde el numero especificado hasta cero.
 
     Args:
-        numero (int): El numero hasta el cual se generaran los impares.
+        numero (int): El numero desde el cual se realizara la cuenta atras.
 
     Returns:
-        list: Lista de numeros impares.
+        list: Lista de numeros desde el numero dado hasta cero.
     """
 
-    listaImpares = []
-    for numeroActual in range(1, numero + 1):
-        if numeroActual % 2 != 0:
-            listaImpares.append(numeroActual)
+    return list(range(numero, -1, -1))
 
-    return listaImpares
-
-def mostrarResultado(impares: list):
+def mostrarResultado(cuenta: list):
     """
-    Muestra por pantalla todos los numeros impares separados por comas.
+    Muestra por pantalla la cuenta atras separados por comas.
 
     Args:
-        impares (list): Lista de numeros impares.
+        cuenta (list): Lista de numeros de la cuenta atras.
     """
 
-    print("Numeros impares:", ", ".join(str(numero) for numero in impares))
+    print("Cuenta atras:", ", ".join(str(numero) for numero in cuenta))
 
 def main():
     # Entrada
     numero = leerNumero()
 
     # Procesamiento
-    impares = numerosImpares(numero)
+    cuenta = cuentaAtras(numero)
 
     # Salida
-    mostrarResultado(impares)
+    mostrarResultado(cuenta)
 
 if __name__ == '__main__':
     main()
