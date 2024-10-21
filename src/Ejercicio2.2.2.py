@@ -6,32 +6,41 @@ todos los años que ha cumplido (desde 1 hasta su edad).
 def leerEdad() -> int:
     """
     Lee la edad del usuario.
+
     Si la edad no es un numero valido o es menor o igual a cero, mostrara un mensaje de error y volvera a pedir la edad.
-    :return: La edad introducida por el usuario.
+
+    Returns:
+        int: La edad introducida por el usuario.
     """
 
     edadValida = False
     edad = 0
 
     while not edadValida:
+        entrada = input("Introduce tu edad: ")
         try:
-            entrada = input("Introduce tu edad: ")
             if entrada.strip() == "":
-                raise ValueError("Error: La entrada no puede estar vacia.")
-            edad = int(entrada)
-            if edad <= 0:
-                raise ValueError("Error: La edad debe ser un numero positivo.")
-            edadValida = True
-        except ValueError as errorMensaje:
-            print(errorMensaje)
+                print("Error: La entrada no puede estar vacia.")
+            else:
+                edad = int(entrada)
+                if edad <= 0:
+                    print("Error: La edad debe ser un numero positivo.")
+                else:
+                    edadValida = True
+        except ValueError:
+            print("Error: Debes introducir un numero valido.")
             
     return edad
 
 def aniosCumplidos(edad: int) -> list:
     """
     Procesa y retorna todos los años que el usuario ha cumplido desde 1 hasta su edad.
-    :param edad: La edad del usuario.
-    :return: Una lista de años cumplidos.
+
+    Args:
+        edad (int): La edad del usuario.
+
+    Returns:
+        list: Una lista de años cumplidos.
     """
 
     todosLosAnios = []
@@ -43,7 +52,9 @@ def aniosCumplidos(edad: int) -> list:
 def mostrarResultado(anios: list):
     """
     Muestra por pantalla todos los años cumplidos.
-    :param anios: Lista de años cumplidos.
+
+    Args:
+        anios (list): Lista de años cumplidos.
     """
 
     for anio in anios:

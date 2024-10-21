@@ -5,29 +5,35 @@ Escribir un programa que pida al usuario una palabra y la muestre por pantalla 1
 def leerPalabra() -> str:
     """
     Lee una palabra del usuario.
+
     Si la palabra esta vacia, mostrara un mensaje de error y volvera a pedir la palabra.
-    :return: La palabra introducida por el usuario.
+
+    Returns:
+        str: La palabra introducida por el usuario.
     """
 
     palabraValida = False
     palabra = ""
 
     while not palabraValida:
-        try:
-            palabra = input("Introduce una palabra: ")
-            if palabra.strip() == "":
-                raise ValueError("Error: La palabra no puede estar vacia.")
+        palabra = input("Introduce una palabra: ")
+        
+        if palabra.strip() == "":
+            print("Error: La palabra no puede estar vacia.")
+        else:
             palabraValida = True
-        except ValueError as errorMensaje:
-            print(errorMensaje)
-            
+
     return palabra
 
 def repetirPalabra(palabra: str) -> str:
     """
     Repite la palabra 10 veces.
-    :param palabra: La palabra a repetir.
-    :return: La cadena con la palabra repetida 10 veces.
+
+    Args:
+        palabra (str): La palabra a repetir.
+
+    Returns:
+        str: La cadena con la palabra repetida 10 veces.
     """
 
     resultado = ""
@@ -40,7 +46,9 @@ def repetirPalabra(palabra: str) -> str:
 def mostrarResultado(resultado: str):
     """
     Muestra por pantalla el resultado.
-    :param resultado: La cadena con la palabra repetida.
+
+    Args:
+        resultado (str): La cadena con la palabra repetida.
     """
 
     print (resultado)
