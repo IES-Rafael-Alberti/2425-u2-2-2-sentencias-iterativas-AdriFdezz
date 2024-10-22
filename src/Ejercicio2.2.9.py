@@ -5,6 +5,7 @@ Escribir un programa que almacene la cadena de caracteres contraseña en una var
 def verificarContrasena(contrasenaAlmacenada: str) -> bool:
     """
     Pide al usuario que ingrese la contraseña hasta que la introduzca correctamente.
+    
     Si el usuario ingresa una cadena vacia, muestra un mensaje de error.
 
     Args:
