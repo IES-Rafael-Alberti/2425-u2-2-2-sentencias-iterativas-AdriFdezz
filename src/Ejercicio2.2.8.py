@@ -64,7 +64,10 @@ def mostrarTriangulo(triangulo: list):
         triangulo (list): Una lista de listas que contiene los numeros del triangulo.
     """
     for fila in triangulo:
-        print(" ".join(map(str, fila)))
+        almacenarNumerosFila = ""
+        for numero in fila:
+            almacenarNumerosFila += str(numero) + " "
+        print(almacenarNumerosFila.strip())
 
 
 def main():
