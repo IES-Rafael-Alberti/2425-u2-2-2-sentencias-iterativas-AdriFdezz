@@ -1,3 +1,5 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/qQgBV5uk)
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=16653889&assignment_repo_type=AssignmentRepo)
 # Práctica 2.2: Sentencias iterativas
 
 Apoyate en los siguientes recursos para realizar la práctica:
@@ -9,62 +11,142 @@ Apoyate en los siguientes recursos para realizar la práctica:
 # Título de la Actividad
 
 ## Identificación de la Actividad
-- **ID de la Actividad:** [ID de la actividad]
-- **Módulo:** [Nombre del módulo] (`PROG`, `IS`, `EDES`, etc.)
-- **Unidad de Trabajo:** [Número y nombre de la unidad de trabajo]
-- **Fecha de Creación:** [Fecha de creación]
-- **Fecha de Entrega:** [Fecha de entrega]
+- **ID de la Actividad:** Práctica 2.2: Sentencias iterativas y saltos
+- **Módulo:** PROG
+- **Unidad de Trabajo:** Unidad 2, Sentencias condicionales y repetitivas
+- **Fecha de Creación:** 17/10/2024
+- **Fecha de Entrega:** 23/10/2024
 - **Alumno(s):** 
-  - **Nombre y Apellidos:** [Nombre y Apellidos del alumno o integrantes del grupo]
-  - **Correo electrónico:** [Correo electrónico g.educaand.es]
-  - **Iniciales del Alumno/Grupo:** [Iniciales del alumno o del grupo]
+  - **Nombre y Apellidos:** Adrian Fernandez Garrido
+  - **Correo electrónico:** afergar613@g.educaand.es
+  - **Iniciales del Alumno/Grupo:** AFG
 
 ## Descripción de la Actividad
-[Descripción detallada de la actividad, objetivos, y contexto necesario para comprenderla. Explicar en qué consiste la actividad y qué se espera que el alumno desarrolle o implemente.]
+- Se realizan ejercicios sobre sentencias iterativas y sus respectivos test.
 
 ## Instrucciones de Compilación y Ejecución
 1. **Requisitos Previos:**
-   - [Lenguaje de programación y versión]
-   - [Entorno de desarrollo o dependencias necesarias]
+   - Python, version: 3.11.9
+   - IDE: Visual Studio Code
 
 2. **Pasos para Compilar el Código:**
-   ```bash
-   [Comando para compilar el código]
-   ```
+
+- No es necesario compilar es python.
 
 3. **Pasos para Ejecutar el Código:**
-   ```bash
-   [Comando para ejecutar la aplicación]
-   ```
+
+- Se ejecuta desde el propio IDE
 
 4. **Ejecución de Pruebas:**
    ```bash
-   [Comandos para ejecutar pruebas, si las hubiera]
+   pytest [el nombre del test]
    ```
 
 ## Desarrollo de la Actividad
 ### Descripción del Desarrollo
-[Explicación de cómo se ha abordado el desarrollo de la actividad, incluyendo las decisiones de diseño, estructura del código y enfoque de resolución de problemas. Se recomienda adjuntar diagramas o capturas de pantalla si es necesario.]
+
+- Se realiza los ejecicios respetando el SRP y documentando todas las funciones.
+- Se separa entrada, procesamiento de salida en el main del ejercicio.
+- Se hace uso de listas para facilitar los ejercicios.
+- Se realizan los test y en varios casos se usa monkeypatch o capfd si fuera necesario         simular un input o capturar una salida.
+- No se realizan mas ejercicios o test por falta de tiempo.
 
 ### Código Fuente
-[Aquí se incluirá un enlace directo a los archivos de código fuente en el repositorio, por ejemplo, si se está usando GitHub: `src/main.java` o algún enlace directo.]
+
+- [Ejemplo ejercicio2_2_9](src/ejercicio2_2_9.py)
+
+ ```python
+   """
+Escribir un programa que almacene la cadena de caracteres contraseña en una variable, pregunte al usuario por la contraseña hasta que introduzca la contraseña correcta.
+"""
+
+def verificarContrasena(contrasenaAlmacenada: str) -> bool:
+    """
+    Pide al usuario que ingrese la contraseña hasta que la introduzca correctamente.
+    
+    Si el usuario ingresa una cadena vacia, muestra un mensaje de error.
+
+    Args:
+        contrasenaAlmacenada (str): La contraseña correcta que debe ser ingresada.
+
+    Returns:
+        bool: Devuelve True cuando se introduce la contraseña correcta.
+    """
+    contrasenaIngresada = ""
+
+    while contrasenaIngresada != contrasenaAlmacenada:
+        contrasenaIngresada = input("Introduce la contraseña: ")
+
+        if contrasenaIngresada.strip() == "":
+            print("Error: La contraseña no puede estar vacia.")
+        elif contrasenaIngresada != contrasenaAlmacenada:
+            print("Contraseña incorrecta, intentalo de nuevo.")
+
+    return True
+
+def mostrarMensajeBienvenida():
+    """hol
+    Muestra un mensaje de bienvenida cuando se introduce la contraseña correcta.
+    """
+    print("Contraseña correcta.")
+
+def main():
+    # Entrada
+    contrasenaAlmacenada = "hola123"
+
+    # Procesamiento
+    contrasenaCorrecta = verificarContrasena(contrasenaAlmacenada)
+
+    # Salida
+    if contrasenaCorrecta:
+        mostrarMensajeBienvenida()
+
+if __name__ == '__main__':
+    main()
+
+   ```
 
 ### Ejemplos de Ejecución
-- **Entrada 1:** Descripción de la entrada y valor de prueba.
-- **Salida Esperada 1:** Explicación de la salida esperada y el resultado de la prueba.
+- **Entrada y salida 1:** Entrada con una contraseña incorrecta y vuelve a pedirla
+
+  ```bash
+   Introduce la contraseña: hola
+   Contraseña incorrecta, intentalo de nuevo.
+   Introduce la contraseña:
+   ```
+
+- **Entrada y salida 2:** Entrada con la contraseña correcta
+
+   ```bash
+   Introduce la contraseña: hola123
+   Contraseña correcta.
+   ```
 
 ### Resultados de Pruebas
-[Aquí se detallará cómo se ha verificado la funcionalidad del código, incluyendo resultados de pruebas automatizadas o manuales, en caso de que las haya.]
 
-## Documentación Adicional
-- **Manual de Usuario:** [Enlace a la documentación del usuario, si existe]
-- **Autorización de Permisos:** Verificar que el profesor tenga permisos de lectura en el repositorio para revisar el código.
+- [Ejemplo test_ejercicio9](tests/test_ejercicio9.py)
+
+ ```python
+   import pytest
+   from src.ejercicio2_2_9 import verificarContrasena
+
+   def test_verificarContrasena(monkeypatch):
+       # Probar una entrada mala y otra buena
+       inputs = iter(['malapass', 'hola123'])
+       monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+
+       assert verificarContrasena('hola123') == True
+   ```
+
+- Se realiza un test sobre la funcion verificar contraseña con monkeypatch para simular el input.
 
 ## Conclusiones
-[Resumen de las conclusiones alcanzadas al desarrollar la actividad, las lecciones aprendidas, y posibles mejoras que se puedan implementar en futuras entregas.]
+
+- Tras la realizacion de este ejercicio hemos aprendido a utilizar mejor las sentencias iterativas y el uso de listas tambien hemos realizado test utilizando monkeypatch y capfd de esta forma podemos hacer las pruebas de una forma mas completa no se han relizado mas ejericios por falta de tiempo debido a que toman mas tiempo para hacerse de lo que parece.
 
 ## Referencias y Fuentes
-[Aquí se listarán las fuentes consultadas para el desarrollo de la actividad, tales como documentación oficial, artículos, o cualquier recurso externo relevante.]
+
+[Revilofe](https://revilofe.github.io/section1/)
 
 ### Notas Adicionales:
 1. **Nombres de Archivos y Repositorios:**
